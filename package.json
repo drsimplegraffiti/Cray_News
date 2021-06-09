@@ -1,31 +1,33 @@
 {
-  "name": "Cray_News",
-  "version": "1.0.0",
-  "description": "NodeJs Project",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/drsimplegraffiti/Cray_News.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/drsimplegraffiti/Cray_News/issues"
-  },
-  "homepage": "https://github.com/drsimplegraffiti/Cray_News#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-validator": "^6.11.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.13"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  }
+    "name": "Cray_News",
+    "version": "1.0.0",
+    "description": "NodeJs Project",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "server": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/drsimplegraffiti/Cray_News.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/drsimplegraffiti/Cray_News/issues"
+    },
+    "homepage": "https://github.com/drsimplegraffiti/Cray_News#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-validator": "^6.11.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.12.13"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    }
 }
