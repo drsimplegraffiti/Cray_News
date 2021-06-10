@@ -14,9 +14,6 @@ app.use(express.json({ extended: false }));
 
 const port = process.env.PORT || PORT;
 const News = require('./models/News');
-app.get('/', (req, res) => {
-    res.json({ message: "Welcome to CNN" });
-});
 
 // seeders
 const { seedAdmin } = require('./seeders/admin');

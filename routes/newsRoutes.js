@@ -6,6 +6,10 @@ const News = require('../models/News');
 const newsCtrl = require('../controllers/newsController');
 const { authenticateUser, checkIfAdmin } = require('../middlewares/authentication');
 
+router.get('/', (req, res) => {
+    res.json({ message: "Welcome to CRAY NEWS NETWORK" });
+});
+
 //POST request to /api/news to create a new news
 router.post('/api/news', authenticateUser, checkIfAdmin, newsCtrl.createNewNews)
 
