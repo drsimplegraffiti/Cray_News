@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
     res.json({ message: "Welcome to CNN" });
 });
 
+// seeders
+const { seedAdmin } = require('./seeders/admin');
+// console.log(seedAdmin());
+
 // News Routes
 app.use('/auth', authRoutes);
 app.use(newsRoutes);

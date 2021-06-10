@@ -12,7 +12,8 @@ exports.registerNewUser = async(req, res) => {
         lastName,
         username,
         email,
-        password
+        password,
+        role
     } = req.body;
     try {
         const existingUser = await User.findOne({ email });
@@ -27,11 +28,14 @@ exports.registerNewUser = async(req, res) => {
             lastName,
             username,
             email,
-            password: hashPassword
+            password: hashPassword,
+            role
         });
 
         const createdUser = await user.save();
-        const token = await jwt.sign({ id: createdUser._id }, SECRET, {
+        const token = await jwt.sign({
+            id: createdUser._id
+        }, SECRET, {
             expiresIn: "2h",
         });
         return res.status(201).json({
@@ -40,6 +44,7 @@ exports.registerNewUser = async(req, res) => {
                 message: "User successfully created",
                 token,
                 userId: createdUser._id,
+                role: createdUser.role
             },
         });
     } catch (error) {
@@ -72,7 +77,9 @@ exports.loginUser = async(req, res) => {
                     },
                 });
             } else {
-                const token = await jwt.sign({ id: user._id }, SECRET, {
+                const token = await jwt.sign({
+                    id: user._id
+                }, SECRET, {
                     expiresIn: "2h",
                 });
                 return res.status(200).json({
@@ -80,6 +87,7 @@ exports.loginUser = async(req, res) => {
                     data: {
                         token,
                         userId: user._id,
+                        role: user.role
                     },
                 });
             }

@@ -18,6 +18,7 @@ exports.createNewNews = (req, res) => {
 
 
 exports.fetchNews = (req, res) => {
+    console.log({ user: req.user })
     let conditions = {};
     if (req.query.title) {
         conditions.title = req.query.title

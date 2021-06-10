@@ -4,20 +4,21 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const News = require('../models/News');
 const newsCtrl = require('../controllers/newsController');
+const { authenticateUser, checkIfAdmin } = require('../middlewares/authentication');
 
 //POST request to /api/news to create a new news
-router.post('/api/news', newsCtrl.createNewNews)
+router.post('/api/news', authenticateUser, checkIfAdmin, newsCtrl.createNewNews)
 
 // GET request to get all news
-router.get('/api/news', newsCtrl.fetchNews)
+router.get('/api/news', authenticateUser, newsCtrl.fetchNews)
 
 //GET single new by ID
-router.get('/api/news/:id', newsCtrl.fetchSingleNews)
+router.get('/api/news/:id', authenticateUser, newsCtrl.fetchSingleNews)
 
 //PUT request to update a single book
-router.put('/api/news/:id', newsCtrl.updateSingleNews)
+router.put('/api/news/:id', authenticateUser, newsCtrl.updateSingleNews)
 
 // DELETE request to /api/nes:id to delete
-router.delete('/api/news/:id', newsCtrl.deleteSingleBook)
+router.delete('/api/news/:id', authenticateUser, newsCtrl.deleteSingleBook)
 
 module.exports = router;
