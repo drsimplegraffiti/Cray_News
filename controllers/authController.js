@@ -52,3 +52,43 @@ exports.registerNewUser = async(req, res) => {
         });
     }
 }
+
+exports.loginUser = async(req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({
+                // status: error,
+                error: "This email does not exist",
+            });
+        } else {
+            const confirmPassword = await bcrypt.compare(password, user.password);
+            if (!confirmPassword) {
+                return res.status(400).json({
+                    status: "error",
+                    data: {
+                        message: "User password is incorrect",
+                    },
+                });
+            } else {
+                const token = await jwt.sign({ id: user._id }, SECRET, {
+                    expiresIn: "2h",
+                });
+                return res.status(200).json({
+                    status: "success",
+                    data: {
+                        token,
+                        userId: user._id,
+                    },
+                });
+            }
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            status: error,
+            error: new Error("Server Error"),
+        });
+    }
+}
