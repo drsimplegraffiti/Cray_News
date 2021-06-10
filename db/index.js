@@ -1,8 +1,3 @@
-/* 
- * 1. Create a connection function for mongodb
- * 2. Start a local mongodb server connection
- */
-
 // Require mongoose
 const mongoose = require('mongoose');
 //Require dotenv file

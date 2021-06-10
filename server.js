@@ -1,43 +1,26 @@
-/* 
- * 1. Creating express server
- * 2. Connect to mongodb database
- * 3. Initialize express app
- * 4. Initialize express middleware
- * 5. Create a simple get request route (optional)
- * 6. Inject our routes
- * 7. Listen to our app connection
- */
-
-//Require express
 const express = require('express');
-
-//ConnectDb function
 const connectDB = require('./db');
-
-//Require dotenv package that allows us use the environmental variables in .env
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 require('dotenv').config();
-//Deconstruct and bring our PORT from the dotenv file
 const { PORT } = process.env;
+const newsRoutes = require('./routes/newsRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 //Connect to db
 connectDB();
-
-//Initialize express app
 const app = express();
-
-//initialize Express middleware
 app.use(express.json({ extended: false }));
 
-//Create a basic express route
+const port = process.env.PORT || PORT;
+const News = require('./models/News');
 app.get('/', (req, res) => {
     res.json({ message: "Welcome to CNN" });
 });
 
-//PORT
-const port = process.env.PORT || PORT;
-
-
-// listen to server
+// News Routes
+app.use('/auth', authRoutes);
+app.use(newsRoutes);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })
