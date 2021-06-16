@@ -43,7 +43,8 @@ If you have any feedback, please reach out to us at abayomiogunnusi@gmail.com
 ```importing 3rd party packages
 const mongoose = require('mongoose');
 ```
-
+## Deployed to heroku link
+[Heroku Link](https://whispering-atoll-56236.herokuapp.com/)
 ## Lessons Learned
 
 - [x] Code refactoring
