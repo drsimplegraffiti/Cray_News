@@ -7,6 +7,7 @@ const { PORT } = process.env;
 const newsRoutes = require('./routes/newsRoutes');
 const authRoutes = require('./routes/authRoutes');
 
+
 //Connect to db
 connectDB();
 const app = express();
